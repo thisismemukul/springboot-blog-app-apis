@@ -4,6 +4,9 @@
 
 ![SpringBoot Blog App](images/blog-app.png)
 
+## ER Diagrams
+![SVG Image](./ER Diagram/Blog App.drawio.svg)
+
 ## Features
 
 ✨ The SpringBoot Blog App APIs provide the following features:

@@ -1,11 +1,20 @@
-# SpringBoot Blog App APIs
+# 🌱 SpringBoot Blog App APIs
 
 🌟 A Java-based SpringBoot application that provides APIs for a blog app.
 
 ![SpringBoot Blog App](images/blog-app.png)
 
 ## ER Diagrams
-![SVG Image](./ER Diagram/Blog App.drawio.svg)
+![SVG Image](ER Diagram/Blog App.drawio.svg)
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Features](#features)
+- [APP Documentation](#docs)
+- [Contributions](#contributions)
+- [License](#license)
+- [Contact](#contact)
 
 ## Features
 
@@ -64,6 +73,12 @@
 - SpringBoot
 - Maven
 
+
+## Docs
+
+📝 Please follow the [Docs](Docs/Steps.md) for detailed information of Spring Blog App APIs.
+
+
 ## Contributions
 
 🤝 Contributions are welcome! If you find any issues or have suggestions, feel free to open an issue or submit a pull request.
@@ -74,16 +89,16 @@
 
 The Blog App is open source software [licensed as MIT][mlh-license].
 
-[mlh-license]: https://github.com/thisismemukul/springboot-blog-app-apis/blob/main/LICENSE.md
+[mlh-license]: LICENSE.md
 
 
 ## Contact
 
-📧 For any inquiries, please email us at info@example.com.
+📧 For any inquiries, please email us at thisismemukul@gmail.com.
 
 ---
 
-🔗 Check out our [blog app frontend repository](https://github.com/your-username/springboot-blog-app-frontend) for the accompanying frontend application.
+🔗 Check out our [blog app frontend repository](https://github.com/thisismemukul/springboot-blog-app-frontend) for the accompanying frontend application.
 
 ✨ Thank you for using the SpringBoot Blog App APIs! Happy coding!
 

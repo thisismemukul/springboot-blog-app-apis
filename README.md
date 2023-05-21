@@ -4,8 +4,8 @@
 
 ![SpringBoot Blog App](images/blog-app.png)
 
-## ER Diagrams
-![SVG Image](ER Diagram/Blog App.drawio.svg)
+## ER Diagram
+![SVG Image](ER_Diagram/BlogAppER.svg)
 
 ## Table of Contents
 

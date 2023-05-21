@@ -42,8 +42,17 @@
     - Configure the following properties to establish a connection with your MySQL database:
         - `spring.jpa.properties.hibernate.dialect`. 🌐
         - `spring.jpa.hibernate.ddl-auto=update`: You may check more options like `create`, `create-drop`, `validate`. 👤
+        - `spring.jpa.show-sql=true`: To Show SQL queries on console. 🧑‍💻
+        - `spring.jpa.properties.hibernate.format_sql=true`: To Format SQL queries on console. 🧑‍💻
 
 8. **At this point our service is ready to up:**
     - Run the main()
+   
+9. **Map User entity to database tables:**
+    - In your Spring Boot project, annotate your entity classes with JPA annotations like `@Entity`, `@Table`, and `@Column`. 🗺️
+    - Use additional annotations like `@Id`, `@GeneratedValue`, and `@Pattern` to specify primary keys, generated values, and relationships between entities. 🔑🔄
+    - Map the entity fields to the corresponding table columns using annotations such as `@Column`. 🔗
+
+
    
 

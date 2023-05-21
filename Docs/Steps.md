@@ -27,3 +27,23 @@
    - Install MySQL Server on your machine if you haven't already. 🗃️
    - Launch MySQL Workbench and create a new connection to your MySQL Server. 🚀
    - Create a new Schema named `blog_app_api`. 📝
+
+6. **Configure database connection in Spring Boot:**
+   - In your Spring Boot project, open the `application.properties` or `application.yml` file. ⚙️
+   - Configure the following properties to establish a connection with your MySQL database:
+      - `spring.datasource.url`: Specify the connection URL for your MySQL database, including the database name, in our case `jdbc:mysql://localhost:3306/blog_app_apis`. 🌐
+      - `spring.datasource.username`: Provide the username to access your MySQL database. 👤
+      - `spring.datasource.password`: Enter the password associated with the username. 🔑
+      - `spring.datasource.driver-class-name`: Set the driver class for MySQL, which is typically `com.mysql.cj.jdbc.Driver`. 🚗
+      - Setting up env variables click on edit configuration and add `db_url=jdbc:mysql://localhost:3306/blog_app_apis;db_user=root;db_pass=yourpassword`
+
+7. **Configure JPA in Spring Boot:**
+    - In your Spring Boot project, open the `application.properties` or `application.yml` file. ⚙️
+    - Configure the following properties to establish a connection with your MySQL database:
+        - `spring.jpa.properties.hibernate.dialect`. 🌐
+        - `spring.jpa.hibernate.ddl-auto=update`: You may check more options like `create`, `create-drop`, `validate`. 👤
+
+8. **At this point our service is ready to up:**
+    - Run the main()
+   
+

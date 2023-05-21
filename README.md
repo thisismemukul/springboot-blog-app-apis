@@ -4,9 +4,6 @@
 
 ![SpringBoot Blog App](images/blog-app.png)
 
-## ER Diagram
-![SVG Image](ER_Diagram/BlogAppER.svg)
-
 ## Table of Contents
 
 - [Installation](#installation)

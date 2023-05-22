@@ -1,16 +1,22 @@
 package com.thismsmemukul.blogappapis.entities;
 
+import com.thismsmemukul.blogappapis.annotation.PasswordValueMatch;
+import com.thismsmemukul.blogappapis.annotation.ValidatePassword;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "users")
+@PasswordValueMatch.List({
+        @PasswordValueMatch(
+                field = "password",
+                fieldMatch = "confirmPassword",
+                message = "Passwords do not match!"
+        )
+})
 @NoArgsConstructor
 @Getter
 @Setter
@@ -47,9 +53,17 @@ public class User {
     private String bio;
 
     @Column(name = "password", nullable = false)
+    @ValidatePassword
+    @NotNull
     @NotBlank(message = "*Password is required")
     @Pattern(regexp = "^[a-zA-Z0-9]{6}$",message = "Password must be of 6 digits and should contains Capital,Small letters and digit.")
     private String password;
+
+    @Column(name = "confirm_password", nullable = false)
+    @ValidatePassword
+    @NotNull
+    @NotBlank(message = "*Confirm Password is required")
+    private String confirmPassword;
 
     @Column(name = "verified", nullable = false)
     private int verified;

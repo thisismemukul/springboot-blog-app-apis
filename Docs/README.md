@@ -53,6 +53,13 @@
     - Use additional annotations like `@Id`, `@GeneratedValue`, and `@Pattern` to specify primary keys, generated values, and relationships between entities. 🔑🔄
     - Map the entity fields to the corresponding table columns using annotations such as `@Column`. 🔗
 
+10. **Custom Password Validator:**
+    - In your Spring Boot project, Start by setting up your project and including the `passay` dependency. 🛠️
+    - Create a new Java class called `PasswordConstraintValidator` in utils package 📦 that implements the `ConstraintValidator` interface. This class will handle the validation logic for a single password field. Inside the class, override the `initialize()` and `isValid()` methods. 🔑🔄
+    - Create another Java class called `PasswordFieldsValueMatchValidator` in utils package 📦 that also implements the `ConstraintValidator` interface. This class will handle the validation logic for matching two password fields. Similar to `PasswordConstraintValidator`, override the `initialize()` and isValid() methods. 🔗
+    - Annotate your password field that needs validation with `@ValidatePassword` to trigger the password validation using the custom `PasswordConstraintValidator` class.
+    - Annotate the password field that you want to validate for matching with `@PasswordValueMatch`.
+
 
    
 

@@ -60,6 +60,9 @@
     - Annotate your password field that needs validation with `@ValidatePassword` to trigger the password validation using the custom `PasswordConstraintValidator` class.
     - Annotate the password field that you want to validate for matching with `@PasswordValueMatch`.
 
+11. **Implement User repository interfaces:**
+    - Create repository interfaces that extend Spring Data JPA's `CrudRepository` or `JpaRepository`.
+    - Define methods in the repositories for performing CRUD operations on the entities. ⚙️
 
    
 

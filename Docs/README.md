@@ -67,7 +67,10 @@
 12. **Implement the services and paylodes:**
     - Create user service interfaces and their implementation classes and UserDto in payloads.
     - Payloads are used to encapsulate and transfer data between the client and the server. 🔐
-    - Implement the required business logic and use the repository interfaces for data access. 🗺️ 
+    - Implement the required business logic and use the repository interfaces for data access. 🗺️
+
+13. **Handling Exceptions make custom `ResourceNotFoundException`:**
+    - Write `updateUser` implementation in `UserServiceImpl` and handle exception for User not found by creating custom `ResourceNotFoundException`. 🙈
 
    
 

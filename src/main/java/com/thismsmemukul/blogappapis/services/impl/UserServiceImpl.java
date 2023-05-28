@@ -1,6 +1,7 @@
 package com.thismsmemukul.blogappapis.services.impl;
 
 import com.thismsmemukul.blogappapis.entities.User;
+import com.thismsmemukul.blogappapis.exceptions.ResourceNotFoundException;
 import com.thismsmemukul.blogappapis.paylodes.UserDto;
 import com.thismsmemukul.blogappapis.repositories.UserRepo;
 import com.thismsmemukul.blogappapis.services.UserService;
@@ -20,7 +21,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto updateUser(UserDto user, Long userId) {
+    public UserDto updateUser(UserDto userDto, Long userId) {
+        User user = this.userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("User","Id",userId));
         return null;
     }
 

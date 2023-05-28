@@ -64,5 +64,10 @@
     - Create repository interfaces that extend Spring Data JPA's `CrudRepository` or `JpaRepository`.
     - Define methods in the repositories for performing CRUD operations on the entities. ⚙️
 
+12. **Implement the services and paylodes:**
+    - Create user service interfaces and their implementation classes and UserDto in payloads.
+    - Payloads are used to encapsulate and transfer data between the client and the server. 🔐
+    - Implement the required business logic and use the repository interfaces for data access. 🗺️ 
+
    
 

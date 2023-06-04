@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "users")
 @PasswordValueMatch.List({
@@ -22,9 +24,9 @@ import lombok.Setter;
 @Setter
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id")
-    private Long id;
+    private UUID id;
 
     @Column(name = "name", nullable = false, length = 40)
     @NotBlank(message = "*Please provide your name")
@@ -44,11 +46,10 @@ public class User {
 
     @Column(name = "phone", unique = true, nullable = false)
     @NotBlank(message = "*Phone is required")
-    @Size(min=0,max=10,message = "Number should have 10 digits")
-    @Pattern(regexp = "^\\+(?:[0-9] ?){6,14}[0-9]$",message = "Please provide a valid phone number")
+    @Pattern(regexp = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message = "Please provide a valid phone number")
     private String phone;
 
-    @Column(name = "bio", length = 100)
+    @Column(name = "bio", length = 600)
     @NotBlank(message = "*Bio is required")
     private String bio;
 
@@ -56,7 +57,8 @@ public class User {
     @ValidatePassword
     @NotNull
     @NotBlank(message = "*Password is required")
-    @Pattern(regexp = "^[a-zA-Z0-9]{6}$",message = "Password must be of 6 digits and should contains Capital,Small letters and digit.")
+//    @Pattern(regexp = "^[a-zA-Z0-9]{6}$",message = "Password must be of 6 digits and should contains Capital,Small letters and digit.")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{6,20}$",message = "Password must be of 6 digits and should contains Capital,Small letters and digit.")
     private String password;
 
     @Column(name = "confirm_password", nullable = false)

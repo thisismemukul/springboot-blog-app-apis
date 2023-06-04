@@ -65,7 +65,7 @@
     - Define methods in the repositories for performing CRUD operations on the entities. ⚙️
 
 12. **Implement the services and paylodes:**
-    - Create user service interfaces and their implementation classes and UserDto in payloads.
+    - Create user service interfaces and their implementation classes and `UserDto` in payloads.
     - Payloads are used to encapsulate and transfer data between the client and the server. 🔐
     - Implement the required business logic and use the repository interfaces for data access. 🗺️
 
@@ -73,5 +73,13 @@
     - Write `updateUser` implementation in `UserServiceImpl` and handle exception for User not found by creating custom `ResourceNotFoundException`. 🙈
     - Write `getUserById`,`getUserByUsername`,`getAllUsers`,`deleteUser`. 📰
 
-   
+14. **Implement the controllers:**
+    - Create controller classes `UserController` responsible for handling incoming requests and returning appropriate responses. 😎
+    - Define methods with appropriate request mappings and annotations such as `@GetMapping`, `@PostMapping`, etc.
+    - Don't forgot to create `@Autowired` for `UserService` for automatic dependency injection, where Spring handles the creation and management of the required objects and injects them into the dependent classes. 🔗
+
+15. **Implement the API endpoints:**
+    - Within the controller methods, implement the logic to handle the API endpoints `/api/users` such as user registration, etc, blog post creation, comment addition, will be created further on. 🛠️
+    - Utilize the services `UserService` to perform necessary operations and return the desired responses. 📰
+    - `ResponseEntity` class is used to represent the entire HTTP response, including the status code, headers, and the response body. 🗺️
 

@@ -6,10 +6,12 @@ import com.thismsmemukul.blogappapis.paylodes.UserDto;
 import com.thismsmemukul.blogappapis.repositories.UserRepo;
 import com.thismsmemukul.blogappapis.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
-
+@Service
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepo userRepo;
@@ -22,7 +24,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto updateUser(UserDto userDto, Long userId) {
+    public UserDto updateUser(UserDto userDto, UUID userId) {
         User user = this.userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("User","Id",userId));
         user.setName(userDto.getName());
         user.setPic(userDto.getPic());
@@ -37,7 +39,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto getUserById(Long userId) {
+    public UserDto getUserById(UUID userId) {
         User user = this.userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("User","Id",userId));
         return this.userToDto(user);
     }
@@ -57,7 +59,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(Long userId) {
+    public void deleteUser(UUID userId) {
         User user = this.userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("User","Id",userId));
         this.userRepo.delete(user);
     }

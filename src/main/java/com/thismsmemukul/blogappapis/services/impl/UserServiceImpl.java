@@ -8,6 +8,7 @@ import com.thismsmemukul.blogappapis.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -23,27 +24,42 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto updateUser(UserDto userDto, Long userId) {
         User user = this.userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("User","Id",userId));
-        return null;
+        user.setName(userDto.getName());
+        user.setPic(userDto.getPic());
+        user.setUsername(userDto.getUsername());
+        user.setEmail(userDto.getEmail());
+        user.setPhone(userDto.getPhone());
+        user.setBio(userDto.getBio());
+        user.setPassword(userDto.getPassword());
+        User saveUser = this.userRepo.save(user);
+        UserDto updatedUser = this.userToDto(saveUser);
+        return updatedUser;
     }
 
     @Override
     public UserDto getUserById(Long userId) {
-        return null;
+        User user = this.userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("User","Id",userId));
+        return this.userToDto(user);
     }
 
     @Override
-    public UserDto getUserByUsername(UserDto username) {
-        return null;
+    public UserDto getUserByUsername(UserDto userDto) {
+        User user = this.userRepo.findByUsername(userDto.getUsername()).orElseThrow(() ->new ResourceNotFoundException("User", "Username", userDto.getId()));
+        return this.userToDto(user);
     }
+
 
     @Override
     public List<UserDto> getAllUsers() {
-        return null;
+        List<User> allusers = this.userRepo.findAll();
+        List<UserDto> userDtosList = allusers.stream().map(user -> this.userToDto(user)).collect(Collectors.toList());
+        return userDtosList;
     }
 
     @Override
     public void deleteUser(Long userId) {
-
+        User user = this.userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("User","Id",userId));
+        this.userRepo.delete(user);
     }
     private User dtoToUser(UserDto userDto){
         User user = new User();

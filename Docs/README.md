@@ -71,6 +71,7 @@
 
 13. **Handling Exceptions make custom `ResourceNotFoundException`:**
     - Write `updateUser` implementation in `UserServiceImpl` and handle exception for User not found by creating custom `ResourceNotFoundException`. 🙈
+    - Write `getUserById`,`getUserByUsername`,`getAllUsers`,`deleteUser`. 📰
 
    
 

@@ -5,6 +5,7 @@ import com.thismsmemukul.blogappapis.exceptions.ResourceNotFoundException;
 import com.thismsmemukul.blogappapis.paylodes.UserDto;
 import com.thismsmemukul.blogappapis.repositories.UserRepo;
 import com.thismsmemukul.blogappapis.services.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,9 +46,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto getUserByUsername(UserDto userDto) {
-        User user = this.userRepo.findByUsername(userDto.getUsername()).orElseThrow(() ->new ResourceNotFoundException("User", "Username", userDto.getId()));
-        return this.userToDto(user);
+    public UserDto getUserByUsername(String userDto) {
+        User user1 = this.userRepo.findByUsername(userDto).orElseThrow(() ->new ResourceNotFoundException("User", "Username", UUID.fromString(userDto)));
+        return this.userToDto(user1);
     }
 
 

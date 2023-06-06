@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepo userRepo;
@@ -47,7 +48,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUserByUsername(String userDto) {
-        User user1 = this.userRepo.findByUsername(userDto).orElseThrow(() ->new ResourceNotFoundException("User", "Username", UUID.fromString(userDto)));
+        User user1 = this.userRepo.findByUsername(userDto).orElseThrow(() ->new ResourceNotFoundException("User", "Id", UUID.randomUUID()));
         return this.userToDto(user1);
     }
 

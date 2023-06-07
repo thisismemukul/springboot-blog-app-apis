@@ -83,3 +83,7 @@
     - Utilize the services `UserService` to perform necessary operations and return the desired responses. 📰
     - `ResponseEntity` class is used to represent the entire HTTP response, including the status code, headers, and the response body. 🗺️
 
+16. **Exception Handling 🚦**
+    - In this project, we implement a `GlobalExceptionHandler` to handle exceptions that occur across the application. 🌍
+    - The `GlobalExceptionHandler` class is responsible for handling various exceptions globally. It uses the `@RestControllerAdvice` annotation to handle exceptions across all controllers. 🛠️
+    - Create custom exception classes like `ResourceNotFoundException` to represent specific exception scenarios. 💥😎

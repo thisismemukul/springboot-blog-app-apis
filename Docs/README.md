@@ -87,3 +87,8 @@
     - In this project, we implement a `GlobalExceptionHandler` to handle exceptions that occur across the application. 🌍
     - The `GlobalExceptionHandler` class is responsible for handling various exceptions globally. It uses the `@RestControllerAdvice` annotation to handle exceptions across all controllers. 🛠️
     - Create custom exception classes like `ResourceNotFoundException` to represent specific exception scenarios. 💥😎
+
+17. **Model Mapper 🗾**
+    - In your Spring Boot project, Start by setting up your project and including the `modelmapper` dependency. 🛠️
+    - Create a `@Bean` `ModelMapper` in `BlogAppApisApplication`. 🥜
+    - Use `ModelMapper` for mapping `User` to `UserDto` and vice versa. 👻

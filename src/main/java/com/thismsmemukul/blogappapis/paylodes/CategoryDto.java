@@ -21,6 +21,6 @@ public class CategoryDto {
     @Size(min = 2, message = "Category title must be min of 2 characters !!")
     private String categoryTitle;
     @NotEmpty(message = "Category Description is required !!")
-    @Size(max = 100, message = "Category Description should be of max 100 characters !!")
+    @Size(max = 500, message = "Category Description should be of max 500 characters !!")
     private String categoryDescription;
 }

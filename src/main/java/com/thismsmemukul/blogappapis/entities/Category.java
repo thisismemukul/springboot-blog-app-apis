@@ -20,6 +20,6 @@ public class Category {
     private UUID categoryId;
     @Column(name = "category_title", nullable = false, length = 40)
     private String categoryTitle;
-    @Column(name = "category_description", nullable = false, length = 100)
+    @Column(name = "category_description", nullable = false, length = 500)
     private String categoryDescription;
 }

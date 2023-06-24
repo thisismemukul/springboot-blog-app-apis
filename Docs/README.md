@@ -92,3 +92,7 @@
     - In your Spring Boot project, Start by setting up your project and including the `modelmapper` dependency. 🛠️
     - Create a `@Bean` `ModelMapper` in `BlogAppApisApplication`. 🥜
     - Use `ModelMapper` for mapping `User` to `UserDto` and vice versa. 👻
+
+18. **Creating Category API 🙀**
+    - Follow steps 11 to 15. 👻
+    - Created files `Category` entity, `CategoryDto`, `CategoryRepo`, `CategoryService`, `CategoryServiceImpl` and `CategoryController`. 🍵

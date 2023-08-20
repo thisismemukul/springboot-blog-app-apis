@@ -20,7 +20,8 @@ public interface PostService {
 
     //get all posts
 
-    PostResponse getAllPost(Integer pageNumber, Integer pageSize, String sortBy, String sortDir);
+    List<PostDto> getAllPost();
+//    PostResponse getAllPost(Integer pageNumber, Integer pageSize, String sortBy, String sortDir);
 
     //get single post
 

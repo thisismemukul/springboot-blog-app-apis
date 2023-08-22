@@ -24,7 +24,7 @@ public class Post {
     @NotBlank(message = "*Please provide title of your post")
     private String title;
 
-    @Column(name = "post_content", nullable = false, length = 1000)
+    @Column(name = "post_content", nullable = false)
     @NotBlank(message = "*Please provide some content")
     private String content;
 

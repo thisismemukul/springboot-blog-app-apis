@@ -13,6 +13,9 @@ import com.thismsmemukul.blogappapis.services.PostService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -63,10 +66,12 @@ public class PostServiceImpl implements PostService {
         this.postRepo.delete(getpost);
     }
 
-    @Override
 //    public PostResponse getAllPost(Integer pageNumber, Integer pageSize, String sortBy, String sortDir) {
-    public List<PostDto> getAllPost() {
-        List<Post> allPosts = this.postRepo.findAll();
+    @Override
+    public List<PostDto> getAllPost(Integer pageNumber, Integer pageSize) {
+        Pageable page = PageRequest.of(pageNumber,pageSize);
+        Page<Post> allPosts = this.postRepo.findAll(page);
+        allPosts.getContent();
         List<PostDto> postDtos = allPosts.stream().map((post) -> this.modelMapper.map(post, PostDto.class)).collect(Collectors.toList());
         return postDtos;
     }

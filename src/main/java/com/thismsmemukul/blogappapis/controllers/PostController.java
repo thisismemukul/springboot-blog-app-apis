@@ -54,20 +54,24 @@ public class PostController {
 
     //GET - get posts by User ID
     @GetMapping("/user/{userId}/posts")
-    public ResponseEntity<List<PostDto>> getPostsByUserId(
-            @PathVariable UUID userId
+    public ResponseEntity<PostResponse> getPostsByUserId(
+            @PathVariable UUID userId,
+            @RequestParam(value = "pageNumber",defaultValue = "0",required = false) Integer pageNumber,
+            @RequestParam(value = "pageSize",defaultValue = "10",required = false) Integer pageSize
     ) {
-        List<PostDto> getPostsByUserId = this.postService.getPostsByUser(userId);
-        return new ResponseEntity<List<PostDto>>(getPostsByUserId, HttpStatus.OK);
+        PostResponse postResponseByUserId = this.postService.getPostsByUser(userId,pageNumber,pageSize);
+        return new ResponseEntity<PostResponse>(postResponseByUserId, HttpStatus.OK);
     }
 
     //GET - get posts by Category ID
     @GetMapping("/category/{categoryId}/posts")
-    public ResponseEntity<List<PostDto>> getPostsByCategoryId(
-            @PathVariable UUID categoryId
+    public ResponseEntity<PostResponse> getPostsByCategoryId(
+            @PathVariable UUID categoryId,
+            @RequestParam(value = "pageNumber",defaultValue = "0",required = false) Integer pageNumber,
+            @RequestParam(value = "pageSize",defaultValue = "10",required = false) Integer pageSize
     ) {
-        List<PostDto> getPostsByCategory = this.postService.getPostsByCategory(categoryId);
-        return new ResponseEntity<List<PostDto>>(getPostsByCategory, HttpStatus.OK);
+        PostResponse postResponseByCategory = this.postService.getPostsByCategory(categoryId, pageNumber,pageSize);
+        return new ResponseEntity<PostResponse>(postResponseByCategory, HttpStatus.OK);
     }
 
     //PUT - update Post by ID

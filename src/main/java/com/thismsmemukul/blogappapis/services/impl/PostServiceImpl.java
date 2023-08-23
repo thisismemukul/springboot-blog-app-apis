@@ -91,19 +91,41 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostDto> getPostsByCategory(UUID categoryId) {
+    public PostResponse getPostsByCategory(UUID categoryId,Integer pageNumber, Integer pageSize) {
+        Pageable page = PageRequest.of(pageNumber,pageSize);
         Category category = this.categoryRepo.findById(categoryId).orElseThrow(()->new ResourceNotFoundException("Category", "Category ID", categoryId));
-        List<Post> postsbyCategory = this.postRepo.findByCategory(category);
-        List<PostDto> postDtos = postsbyCategory.stream().map((post) -> this.modelMapper.map(post, PostDto.class)).collect(Collectors.toList());
-        return postDtos;
+        Page<Post> postPageByCategory = this.postRepo.findByCategory(category,page);
+        List<Post> allPosts=postPageByCategory.getContent();
+
+        List<PostDto> postDtos = allPosts.stream().map((post) -> this.modelMapper.map(post, PostDto.class)).collect(Collectors.toList());
+        PostResponse postResponse=new PostResponse();
+        postResponse.setContent(postDtos);
+        postResponse.setPageNumber(postPageByCategory.getNumber());
+        postResponse.setPageSize(postPageByCategory.getSize());
+        postResponse.setTotalPages(postPageByCategory.getTotalPages());
+        postResponse.setTotalElements(postPageByCategory.getTotalElements());
+        postResponse.setLastPage(postPageByCategory.isLast());
+
+        return postResponse;
     }
 
     @Override
-    public List<PostDto> getPostsByUser(UUID userId) {
+    public PostResponse getPostsByUser(UUID userId,Integer pageNumber, Integer pageSize) {
+        Pageable page = PageRequest.of(pageNumber,pageSize);
         User user = this.userRepo.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User","User ID",userId));
-        List<Post> postsbyUser = this.postRepo.findByUser(user);
-        List<PostDto> postDtos = postsbyUser.stream().map((post) -> this.modelMapper.map(post, PostDto.class)).collect(Collectors.toList());
-        return postDtos;
+        Page<Post> postPageByUser = this.postRepo.findByUser(user,page);
+        List<Post> allPosts=postPageByUser.getContent();
+
+        List<PostDto> postDtos = allPosts.stream().map((post) -> this.modelMapper.map(post, PostDto.class)).collect(Collectors.toList());
+        PostResponse postResponse=new PostResponse();
+        postResponse.setContent(postDtos);
+        postResponse.setPageNumber(postPageByUser.getNumber());
+        postResponse.setPageSize(postPageByUser.getSize());
+        postResponse.setTotalPages(postPageByUser.getTotalPages());
+        postResponse.setTotalElements(postPageByUser.getTotalElements());
+        postResponse.setLastPage(postPageByUser.isLast());
+
+        return postResponse;
     }
 
     @Override

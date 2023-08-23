@@ -29,10 +29,10 @@ public interface PostService {
 
     //get all posts by category
 
-    List<PostDto> getPostsByCategory(UUID categoryId);
+    PostResponse getPostsByCategory(UUID categoryId,Integer pageNumber, Integer pageSize);
 
     //get all posts by user
-    List<PostDto> getPostsByUser(UUID userId);
+    PostResponse getPostsByUser(UUID userId,Integer pageNumber, Integer pageSize);
 
     //search posts
     List<PostDto> searchPosts(String keyword);

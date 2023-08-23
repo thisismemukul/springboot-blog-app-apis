@@ -2,6 +2,7 @@ package com.thismsmemukul.blogappapis.controllers;
 
 import com.thismsmemukul.blogappapis.paylodes.ApiResponse;
 import com.thismsmemukul.blogappapis.paylodes.PostDto;
+import com.thismsmemukul.blogappapis.paylodes.PostResponse;
 import com.thismsmemukul.blogappapis.services.PostService;
 import lombok.extern.flogger.Flogger;
 import lombok.extern.java.Log;
@@ -34,12 +35,12 @@ public class PostController {
 
     //GET - get all Posts
     @GetMapping("/posts")
-    public ResponseEntity<List<PostDto>> getAllPosts(
-            @RequestParam(value = "pageNumber",defaultValue = "1",required = false) Integer pageNumber,
-            @RequestParam(value = "pageSize",defaultValue = "5",required = false) Integer pageSize
+    public ResponseEntity<PostResponse> getAllPosts(
+            @RequestParam(value = "pageNumber",defaultValue = "0",required = false) Integer pageNumber,
+            @RequestParam(value = "pageSize",defaultValue = "10",required = false) Integer pageSize
     ) {
-        List<PostDto> allPost = this.postService.getAllPost(pageNumber,pageSize);
-        return new ResponseEntity<>(allPost, HttpStatus.OK);
+        PostResponse postResponse = this.postService.getAllPost(pageNumber,pageSize);
+        return new ResponseEntity<>(postResponse, HttpStatus.OK);
     }
 
     //GET - get Post By ID

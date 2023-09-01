@@ -96,3 +96,41 @@
 18. **Creating Category API 🙀**
     - Follow steps 11 to 15. 👻
     - Created files `Category` entity, `CategoryDto`, `CategoryRepo`, `CategoryService`, `CategoryServiceImpl` and `CategoryController`. 🍵
+    - Completed the initial version of `CategoryServiceImpl`, implementing methods for CRUD operations and category management. 🎉c    - Created Post Entity.
+
+19. **Creating POST API 📮**
+    - Creating Post and Relationship in one go.
+    - Edit Category Entity and User Entity to implement `OneToMany Relationship`.
+    - ```java 
+      @OneToMany(mappedBy = "category",cascade = CascadeType.ALL,fetch = FetchType.LAZY)    private List<Post> posts = new ArrayList<>();
+      ```
+    - ```java 
+      @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)   private List<Post> posts = new ArrayList<>();
+      ```
+    - Created files `Post` entity, `PostDto`, `PostResponse`, `PostRepo`, `PostService`, `PostServiceImpl` and `PostController`. 🍵
+    - Creating API for `UPDATING` and `DELETING` POST. 📮
+
+20. **Implement Pagination in API 📟**
+    - Pagination is the process of dividing a large dataset into smaller, manageable chunks, or "pages," when querying an API.
+    - #### Endpoint: Get All Posts
+    - The API endpoint for fetching all posts should accept query parameters for pagination:
+    -  ```shell 
+       /posts?pageNumber={pageNumber}&pageSize={pageSize}
+       ```
+    - In this implementation:
+      - `pageNumber`: Specifies the page number to retrieve (default is 1).
+      - `pageSize`: Specifies the number of items per page (default is 5).
+    - Below is a part of code from Controller
+      - ```java
+        @GetMapping("/user/{userId}/posts")
+        public ResponseEntity<PostResponse> getPostsByUserId(
+        @PathVariable UUID userId,
+        @RequestParam(value = "pageNumber",defaultValue = "0",required = false) Integer pageNumber,
+        @RequestParam(value = "pageSize",defaultValue = "10",required = false) Integer pageSize
+        ) {
+        PostResponse postResponseByUserId = this.postService.getPostsByUser(userId,pageNumber,pageSize);
+        return new ResponseEntity<PostResponse>(postResponseByUserId, HttpStatus.OK);
+        }
+        ```
+20. **todo**
+

@@ -132,5 +132,12 @@
         return new ResponseEntity<PostResponse>(postResponseByUserId, HttpStatus.OK);
         }
         ```
-20. **todo**
+20. **Implementing Sorting 🔝**
+    - In your controller class (PostController), modify the getAllPosts method to accept sorting parameters
+    - Here's an example of how to make a GET request to the /posts endpoint with sorting:
+      - ```shell
+        GET /posts?pageNumber=1&pageSize=20&sortBy=title&sortDir=asc
+        ``` 
+    - Follow the same step for `getPostsByCategory` and `getPostsByUser`. 👨‍💻
+21. **todo**
 

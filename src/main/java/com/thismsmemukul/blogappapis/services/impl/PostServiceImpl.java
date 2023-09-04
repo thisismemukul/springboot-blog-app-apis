@@ -92,8 +92,10 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostResponse getPostsByCategory(UUID categoryId,Integer pageNumber, Integer pageSize) {
-        Pageable page = PageRequest.of(pageNumber,pageSize);
+    public PostResponse getPostsByCategory(UUID categoryId,Integer pageNumber, Integer pageSize,String sortBy,String sortDir) {
+        Sort sort = (sortDir.equalsIgnoreCase("asc")) ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+        Pageable page = PageRequest.of(pageNumber, pageSize, sort);
+
         Category category = this.categoryRepo.findById(categoryId).orElseThrow(()->new ResourceNotFoundException("Category", "Category ID", categoryId));
         Page<Post> postPageByCategory = this.postRepo.findByCategory(category,page);
         List<Post> allPosts=postPageByCategory.getContent();
@@ -111,8 +113,9 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostResponse getPostsByUser(UUID userId,Integer pageNumber, Integer pageSize) {
-        Pageable page = PageRequest.of(pageNumber,pageSize);
+    public PostResponse getPostsByUser(UUID userId,Integer pageNumber, Integer pageSize,String sortBy,String sortDir) {
+        Sort sort = (sortDir.equalsIgnoreCase("asc")) ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+        Pageable page = PageRequest.of(pageNumber, pageSize, sort);
         User user = this.userRepo.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User","User ID",userId));
         Page<Post> postPageByUser = this.postRepo.findByUser(user,page);
         List<Post> allPosts=postPageByUser.getContent();
